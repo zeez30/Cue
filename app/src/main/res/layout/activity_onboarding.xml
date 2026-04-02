@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/surface_dark">
+
+    <!-- Pixel corner decoration top-left -->
+    <View
+        android:id="@+id/deco_tl"
+        android:layout_width="12dp"
+        android:layout_height="12dp"
+        android:background="@color/coral"
+        android:layout_margin="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <!-- Pixel corner decoration top-right -->
+    <View
+        android:id="@+id/deco_tr"
+        android:layout_width="12dp"
+        android:layout_height="12dp"
+        android:background="@color/grape"
+        android:layout_margin="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Current page / total pages indicator -->
+    <TextView
+        android:id="@+id/text_page_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1 / 5"
+        android:textColor="@color/text_muted"
+        android:textSize="10sp"
+        android:fontFamily="monospace"
+        android:letterSpacing="0.1"
+        android:layout_marginTop="24dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Slide content — name input is inside OnboardingSlideFragment (slide 4) so it scrolls properly -->
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/onboarding_pager"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/text_page_indicator"
+        app:layout_constraintBottom_toTopOf="@id/btn_onboarding_skip"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Skip button — hidden on the last slide -->
+    <Button
+        android:id="@+id/btn_onboarding_skip"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="20dp"
+        android:text="SKIP"
+        android:fontFamily="monospace"
+        android:textSize="12sp"
+        style="@style/Widget.Cue.PixelButtonOutlined"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btn_onboarding_next"/>
+
+    <!-- Next / Begin button -->
+    <Button
+        android:id="@+id/btn_onboarding_next"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:text="NEXT  ▶"
+        android:fontFamily="monospace"
+        android:textSize="12sp"
+        style="@style/Widget.Cue.PixelButton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btn_onboarding_skip"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

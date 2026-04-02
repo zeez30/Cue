@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/surface_dark"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LOG A MEAL"
+            android:textColor="@color/olive_dark"
+            android:textSize="18sp"
+            android:fontFamily="monospace"
+            android:letterSpacing="0.08"
+            android:layout_marginBottom="4dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="No portion sizes. No calories. Just your experience."
+            android:textColor="@color/text_secondary"
+            android:textSize="13sp"
+            android:layout_marginBottom="24dp"/>
+
+        <!-- WHAT DID YOU EAT -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="WHAT DID YOU EAT?"
+            android:textColor="@color/text_muted"
+            android:textSize="10sp"
+            android:letterSpacing="0.15"
+            android:fontFamily="monospace"
+            android:layout_marginBottom="6dp"/>
+
+        <EditText
+            android:id="@+id/edit_food_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/surface_input"
+            android:padding="12dp"
+            android:textColor="@color/cream"
+            android:textColorHint="@color/text_muted"
+            android:hint="e.g. scrambled eggs, toast, orange juice"
+            android:fontFamily="monospace"
+            android:textSize="13sp"
+            android:inputType="textMultiLine|textCapSentences"
+            android:minLines="2"
+            android:layout_marginBottom="20dp"/>
+
+        <!-- MEAL TYPE DROPDOWN -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MEAL TYPE"
+            android:textColor="@color/text_muted"
+            android:textSize="10sp"
+            android:letterSpacing="0.15"
+            android:fontFamily="monospace"
+            android:layout_marginBottom="6dp"/>
+
+        <Spinner
+            android:id="@+id/spinner_meal_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/surface_input"
+            android:padding="4dp"
+            android:layout_marginBottom="20dp"/>
+
+        <!-- SATISFACTION RATING -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="HOW SATISFYING WAS IT?"
+            android:textColor="@color/text_muted"
+            android:textSize="10sp"
+            android:letterSpacing="0.15"
+            android:fontFamily="monospace"
+            android:layout_marginBottom="6dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="4dp">
+
+            <com.google.android.material.slider.Slider
+                android:id="@+id/satisfaction_slider"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:labelBehavior="gone"
+                android:valueFrom="1"
+                android:valueTo="10"
+                android:stepSize="1"
+                android:value="5"
+                app:thumbColor="@color/coral"
+                app:trackColorActive="@color/coral"
+                app:trackColorInactive="@color/surface_input"/>
+
+            <TextView
+                android:id="@+id/text_satisfaction_value"
+                android:layout_width="55dp"
+                android:layout_height="wrap_content"
+                android:text="5 / 10"
+                android:textColor="@color/accent_tan"
+                android:textSize="14sp"
+                android:fontFamily="monospace"
+                android:gravity="end"
+                android:layout_marginStart="10dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="20dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Not satisfying"
+                android:textColor="@color/text_muted"
+                android:textSize="10sp"
+                android:fontFamily="monospace"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Deeply satisfying"
+                android:textColor="@color/text_muted"
+                android:textSize="10sp"
+                android:fontFamily="monospace"
+                android:gravity="end"/>
+        </LinearLayout>
+
+        <!-- WHERE DID YOU EAT — DROPDOWN -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="WHERE DID YOU EAT?"
+            android:textColor="@color/text_muted"
+            android:textSize="10sp"
+            android:letterSpacing="0.15"
+            android:fontFamily="monospace"
+            android:layout_marginBottom="6dp"/>
+
+        <Spinner
+            android:id="@+id/spinner_context"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/surface_input"
+            android:padding="4dp"
+            android:layout_marginBottom="20dp"/>
+
+        <!-- HOW WERE YOU FEELING — DROPDOWN -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="HOW WERE YOU FEELING?"
+            android:textColor="@color/text_muted"
+            android:textSize="10sp"
+            android:letterSpacing="0.15"
+            android:fontFamily="monospace"
+            android:layout_marginBottom="6dp"/>
+
+        <Spinner
+            android:id="@+id/spinner_emotion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/surface_input"
+            android:padding="4dp"
+            android:layout_marginBottom="20dp"/>
+
+        <!-- OPTIONAL NOTE -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ANYTHING ELSE? (OPTIONAL)"
+            android:textColor="@color/text_muted"
+            android:textSize="10sp"
+            android:letterSpacing="0.15"
+            android:fontFamily="monospace"
+            android:layout_marginBottom="6dp"/>
+
+        <EditText
+            android:id="@+id/edit_meal_note"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/surface_input"
+            android:padding="12dp"
+            android:textColor="@color/cream"
+            android:textColorHint="@color/text_muted"
+            android:hint="Any other observations…"
+            android:fontFamily="monospace"
+            android:textSize="13sp"
+            android:inputType="textMultiLine|textCapSentences"
+            android:minLines="2"
+            android:layout_marginBottom="16dp"/>
+
+        <Button
+            android:id="@+id/btn_save_meal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="▶ SAVE MEAL"
+            android:fontFamily="monospace"
+            android:textSize="14sp"
+            android:layout_marginBottom="28dp"
+            style="@style/Widget.Cue.PixelButton"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/divider"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MEAL HISTORY"
+            android:textColor="@color/text_muted"
+            android:textSize="10sp"
+            android:letterSpacing="0.15"
+            android:fontFamily="monospace"
+            android:layout_marginBottom="10dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_meal_history"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="false"/>
+
+    </LinearLayout>
+</ScrollView>

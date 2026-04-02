@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Pixel-art body-signal icon: a simple diamond/crystal shape
+    representing the internal signal of hunger/fullness.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- Outer diamond -->
+    <path
+        android:fillColor="@color/accent_tan"
+        android:pathData="M12,2 L22,12 L12,22 L2,12 Z"/>
+
+    <!-- Inner cutout for pixel feel -->
+    <path
+        android:fillColor="@color/surface_dark"
+        android:pathData="M12,7 L17,12 L12,17 L7,12 Z"/>
+
+    <!-- Centre dot -->
+    <path
+        android:fillColor="@color/accent_tan"
+        android:pathData="M11,11 H13 V13 H11 Z"/>
+
+</vector>

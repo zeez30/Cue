@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Pixel-art bowl icon representing a meal, drawn with rectangular paths
+    to reinforce the pixel-art aesthetic.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- Steam left -->
+    <path
+        android:fillColor="@color/accent_tan"
+        android:pathData="M8,2 H9 V3 H8 Z M8,4 H9 V5 H8 Z M8,6 H9 V7 H8 Z"/>
+
+    <!-- Steam right -->
+    <path
+        android:fillColor="@color/accent_tan"
+        android:pathData="M12,2 H13 V3 H12 Z M12,4 H13 V5 H12 Z M12,6 H13 V7 H12 Z"/>
+
+    <!-- Bowl body -->
+    <path
+        android:fillColor="@color/accent_tan"
+        android:pathData="M3,10 H21 V12 Q21,20 12,20 Q3,20 3,12 Z"/>
+
+    <!-- Plate base -->
+    <path
+        android:fillColor="@color/accent_tan"
+        android:pathData="M2,21 H22 V22 H2 Z"/>
+
+</vector>

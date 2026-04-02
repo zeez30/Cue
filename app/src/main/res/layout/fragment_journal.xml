@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/surface_dark"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="BODY JOURNAL"
+            android:textColor="@color/mustard"
+            android:textSize="18sp"
+            android:fontFamily="monospace"
+            android:letterSpacing="0.08"
+            android:layout_marginBottom="4dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Awareness without judgment."
+            android:textColor="@color/text_secondary"
+            android:textSize="13sp"
+            android:layout_marginBottom="24dp"/>
+
+        <!-- PROMPT 1: Body feeling -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="0dp"
+            app:cardBackgroundColor="@color/surface_card"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/mustard"
+            app:strokeWidth="1dp"
+            xmlns:app="http://schemas.android.com/apk/res-auto">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="14dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="◇ HOW DOES YOUR BODY FEEL RIGHT NOW?"
+                    android:textColor="@color/mustard"
+                    android:textSize="11sp"
+                    android:fontFamily="monospace"
+                    android:letterSpacing="0.1"
+                    android:layout_marginBottom="4dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Physical sensations, energy, tension, comfort…"
+                    android:textColor="@color/text_muted"
+                    android:textSize="11sp"
+                    android:layout_marginBottom="10dp"/>
+
+                <EditText
+                    android:id="@+id/edit_body_feeling"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/surface_input"
+                    android:padding="10dp"
+                    android:textColor="@color/cream"
+                    android:textColorHint="@color/text_muted"
+                    android:hint="e.g. My shoulders are tense, my stomach feels settled…"
+                    android:textSize="13sp"
+                    android:inputType="textMultiLine|textCapSentences"
+                    android:minLines="3"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- PROMPT 2: Challenge the food police -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="0dp"
+            app:cardBackgroundColor="@color/surface_card"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/coral"
+            app:strokeWidth="1dp"
+            xmlns:app="http://schemas.android.com/apk/res-auto">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="14dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="◈ CHALLENGE THE FOOD POLICE"
+                    android:textColor="@color/coral"
+                    android:textSize="11sp"
+                    android:fontFamily="monospace"
+                    android:letterSpacing="0.1"
+                    android:layout_marginBottom="4dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Name a diet-culture thought you noticed — then reframe it."
+                    android:textColor="@color/text_muted"
+                    android:textSize="11sp"
+                    android:layout_marginBottom="10dp"/>
+
+                <EditText
+                    android:id="@+id/edit_challenged_thought"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/surface_input"
+                    android:padding="10dp"
+                    android:textColor="@color/cream"
+                    android:textColorHint="@color/text_muted"
+                    android:hint="e.g. I thought I shouldn't have eaten dessert → Actually, I enjoyed it and that's enough."
+                    android:textSize="13sp"
+                    android:inputType="textMultiLine|textCapSentences"
+                    android:minLines="3"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- PROMPT 3: Body gratitude -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:cardCornerRadius="0dp"
+            app:cardBackgroundColor="@color/surface_card"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/grape"
+            app:strokeWidth="1dp"
+            xmlns:app="http://schemas.android.com/apk/res-auto">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="14dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="◉ BODY GRATITUDE"
+                    android:textColor="@color/grape"
+                    android:textSize="11sp"
+                    android:fontFamily="monospace"
+                    android:letterSpacing="0.1"
+                    android:layout_marginBottom="4dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="What did your body do for you today?"
+                    android:textColor="@color/text_muted"
+                    android:textSize="11sp"
+                    android:layout_marginBottom="10dp"/>
+
+                <EditText
+                    android:id="@+id/edit_body_gratitude"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/surface_input"
+                    android:padding="10dp"
+                    android:textColor="@color/cream"
+                    android:textColorHint="@color/text_muted"
+                    android:hint="e.g. My legs walked me to the shops. My hands made tea."
+                    android:textSize="13sp"
+                    android:inputType="textMultiLine|textCapSentences"
+                    android:minLines="3"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Mood selector -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="HOW WAS TODAY OVERALL?"
+            android:textColor="@color/text_muted"
+            android:textSize="10sp"
+            android:letterSpacing="0.15"
+            android:fontFamily="monospace"
+            android:layout_marginBottom="12dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="24dp">
+
+            <TextView
+                android:id="@+id/mood_great"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="✨"
+                android:textSize="28sp"
+                android:gravity="center"
+                android:padding="6dp"
+                android:contentDescription="Great"
+                android:clickable="true"
+                android:focusable="true"/>
+
+            <TextView
+                android:id="@+id/mood_good"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="😊"
+                android:textSize="28sp"
+                android:gravity="center"
+                android:padding="6dp"
+                android:contentDescription="Good"
+                android:clickable="true"
+                android:focusable="true"/>
+
+            <TextView
+                android:id="@+id/mood_okay"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="😐"
+                android:textSize="28sp"
+                android:gravity="center"
+                android:padding="6dp"
+                android:contentDescription="Okay"
+                android:clickable="true"
+                android:focusable="true"/>
+
+            <TextView
+                android:id="@+id/mood_difficult"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="😞"
+                android:textSize="28sp"
+                android:gravity="center"
+                android:padding="6dp"
+                android:contentDescription="Difficult"
+                android:clickable="true"
+                android:focusable="true"/>
+
+            <TextView
+                android:id="@+id/mood_rough"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="🌧️"
+                android:textSize="28sp"
+                android:gravity="center"
+                android:padding="6dp"
+                android:contentDescription="Rough"
+                android:clickable="true"
+                android:focusable="true"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_save_journal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="▶ SAVE ENTRY"
+            android:fontFamily="monospace"
+            android:textSize="14sp"
+            android:layout_marginBottom="28dp"
+            style="@style/Widget.Cue.PixelButton"/>
+
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/divider"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PAST ENTRIES"
+            android:textColor="@color/text_muted"
+            android:textSize="10sp"
+            android:letterSpacing="0.15"
+            android:fontFamily="monospace"
+            android:layout_marginBottom="10dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_journal_history"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="false"/>
+
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.zeez.nourishquest.ui.home.HomeFragment"
+        android:label="Home">
+
+        <action
+            android:id="@+id/action_home_to_hunger"
+            app:destination="@id/hungerFragment"/>
+
+        <action
+            android:id="@+id/action_home_to_meal"
+            app:destination="@id/mealFragment"/>
+
+        <action
+            android:id="@+id/action_home_to_journal"
+            app:destination="@id/journalFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/hungerFragment"
+        android:name="com.zeez.nourishquest.ui.hunger.HungerFragment"
+        android:label="Hunger Check-In"/>
+
+    <fragment
+        android:id="@+id/mealFragment"
+        android:name="com.zeez.nourishquest.ui.meal.MealFragment"
+        android:label="Log a Meal"/>
+
+    <fragment
+        android:id="@+id/journalFragment"
+        android:name="com.zeez.nourishquest.ui.journal.JournalFragment"
+        android:label="Body Journal"/>
+
+    <fragment
+        android:id="@+id/statsFragment"
+        android:name="com.zeez.nourishquest.ui.stats.StatsFragment"
+        android:label="Insights"/>
+
+</navigation>

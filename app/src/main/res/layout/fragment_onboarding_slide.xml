@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/surface_dark"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:padding="32dp"
+        android:paddingTop="48dp">
+
+        <!-- Large pixel icon for this slide -->
+        <TextView
+            android:id="@+id/text_slide_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="◈"
+            android:textColor="@color/coral"
+            android:textSize="56sp"
+            android:fontFamily="monospace"
+            android:layout_marginBottom="32dp"/>
+
+        <!-- Decorative border bar above title -->
+        <View
+            android:layout_width="48dp"
+            android:layout_height="3dp"
+            android:background="@color/mustard"
+            android:layout_marginBottom="20dp"/>
+
+        <!-- Slide title -->
+        <TextView
+            android:id="@+id/text_slide_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TITLE"
+            android:textColor="@color/mustard"
+            android:textSize="16sp"
+            android:fontFamily="monospace"
+            android:letterSpacing="0.1"
+            android:gravity="center"
+            android:layout_marginBottom="24dp"/>
+
+        <!-- Slide body text -->
+        <TextView
+            android:id="@+id/text_slide_body"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Body"
+            android:textColor="@color/cream"
+            android:textSize="14sp"
+            android:lineSpacingMultiplier="1.6"
+            android:layout_marginBottom="24dp"/>
+
+        <!-- Decorative border bar below body -->
+        <View
+            android:layout_width="48dp"
+            android:layout_height="3dp"
+            android:background="@color/grape"
+            android:layout_marginBottom="24dp"/>
+
+        <!-- Name input — only shown on slide 4 (last slide). Visibility controlled in OnboardingSlideFragment. -->
+        <LinearLayout
+            android:id="@+id/name_section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="YOUR NAME (OPTIONAL)"
+                android:textColor="@color/text_muted"
+                android:textSize="10sp"
+                android:fontFamily="monospace"
+                android:letterSpacing="0.15"
+                android:layout_marginBottom="8dp"/>
+
+            <EditText
+                android:id="@+id/edit_player_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/surface_input"
+                android:padding="12dp"
+                android:textColor="@color/cream"
+                android:textColorHint="@color/text_muted"
+                android:hint="e.g. Zee"
+                android:fontFamily="monospace"
+                android:textSize="14sp"
+                android:inputType="textPersonName|textCapWords"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

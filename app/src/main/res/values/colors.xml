@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Cue brand palette — happy, light scheme -->
+    <!-- Tropical Mint  #23F0C7 — primary action, scale fills, streak counter -->
+    <!-- Light Coral    #EF767A — accent, save buttons, hunger warm tones     -->
+    <!-- Soft Periwinkle #7D7ABC — journal prompts, secondary labels           -->
+    <!-- Dusty Grape    #6457A6 — cards, section headers, nav selected        -->
+    <!-- Mustard        #FFE347 — affirmation, home title, highlights          -->
+
+    <color name="mint">#23F0C7</color>
+    <color name="coral">#EF767A</color>
+    <color name="periwinkle">#7D7ABC</color>
+    <color name="grape">#6457A6</color>
+    <color name="mustard">#FFE347</color>
+
+    <!-- Light background surfaces — keeps the palette airy and readable -->
+    <color name="surface_dark">#1A1530</color>
+    <color name="surface_card">#241E42</color>
+    <color name="surface_input">#2E2756</color>
+
+    <!-- Text -->
+    <color name="text_primary">#F5F5FF</color>
+    <color name="text_secondary">#C0BAE8</color>
+    <color name="text_muted">#7B74B0</color>
+
+    <!-- Named aliases used in layouts and code -->
+    <color name="accent_tan">#FFE347</color>
+    <color name="accent_rust">#EF767A</color>
+    <color name="accent_olive">#23F0C7</color>
+    <color name="olive_dark">#6457A6</color>
+    <color name="forest_deep">#1A1530</color>
+    <color name="cream">#F5F5FF</color>
+    <color name="tan_warm">#FFE347</color>
+    <color name="rust">#EF767A</color>
+
+    <color name="divider">#2E2756</color>
+    <color name="status_bar">#1A1530</color>
+</resources>

@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/surface_dark"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Screen title -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="HUNGER CHECK-IN"
+            android:textColor="@color/mustard"
+            android:textSize="18sp"
+            android:fontFamily="monospace"
+            android:letterSpacing="0.08"
+            android:layout_marginBottom="4dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Where are you on the scale right now?"
+            android:textColor="@color/text_secondary"
+            android:textSize="13sp"
+            android:layout_marginBottom="24dp"/>
+
+        <!-- Pixel scale: 10 blocks built programmatically in HungerFragment -->
+        <LinearLayout
+            android:id="@+id/pixel_scale"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="12dp"/>
+
+        <!-- Scale number -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="6dp">
+
+            <TextView
+                android:id="@+id/text_scale_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5"
+                android:textColor="@color/cream"
+                android:textSize="40sp"
+                android:fontFamily="monospace"
+                android:layout_marginEnd="8dp"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/text_scale_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Neutral &amp; comfortable"
+                    android:textColor="@color/mustard"
+                    android:textSize="14sp"
+                    android:fontFamily="monospace"/>
+
+                <TextView
+                    android:id="@+id/text_body_cue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="No strong signals either way"
+                    android:textColor="@color/text_muted"
+                    android:textSize="11sp"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Scale legend -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="24dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="1 = Painfully hungry"
+                android:textColor="@color/text_muted"
+                android:textSize="10sp"
+                android:fontFamily="monospace"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="10 = Painfully full"
+                android:textColor="@color/text_muted"
+                android:textSize="10sp"
+                android:fontFamily="monospace"
+                android:gravity="end"/>
+        </LinearLayout>
+
+        <!-- Phase selector -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="WHEN IS THIS CHECK-IN?"
+            android:textColor="@color/text_muted"
+            android:textSize="10sp"
+            android:letterSpacing="0.15"
+            android:fontFamily="monospace"
+            android:layout_marginBottom="8dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="20dp">
+
+            <Button
+                android:id="@+id/btn_before"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="8dp"
+                android:text="◈ BEFORE MEAL"
+                android:fontFamily="monospace"
+                android:textSize="12sp"
+                style="@style/Widget.Cue.PixelButton"/>
+
+            <Button
+                android:id="@+id/btn_after"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:text="◉ AFTER MEAL"
+                android:fontFamily="monospace"
+                android:textSize="12sp"
+                style="@style/Widget.Cue.PixelButtonOutlined"/>
+        </LinearLayout>
+
+        <!-- Optional note -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NOTE (OPTIONAL)"
+            android:textColor="@color/text_muted"
+            android:textSize="10sp"
+            android:letterSpacing="0.15"
+            android:fontFamily="monospace"
+            android:layout_marginBottom="6dp"/>
+
+        <EditText
+            android:id="@+id/edit_note"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/surface_input"
+            android:padding="12dp"
+            android:textColor="@color/cream"
+            android:textColorHint="@color/text_muted"
+            android:hint="e.g. skipped breakfast, long meeting…"
+            android:fontFamily="monospace"
+            android:textSize="13sp"
+            android:inputType="textMultiLine|textCapSentences"
+            android:minLines="2"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Save button -->
+        <Button
+            android:id="@+id/btn_save_check_in"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="▶ SAVE CHECK-IN"
+            android:fontFamily="monospace"
+            android:textSize="14sp"
+            android:layout_marginBottom="28dp"
+            style="@style/Widget.Cue.PixelButton"/>
+
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/divider"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Today's log count -->
+        <TextView
+            android:id="@+id/text_today_log_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0 check-ins today"
+            android:textColor="@color/text_muted"
+            android:textSize="10sp"
+            android:letterSpacing="0.15"
+            android:fontFamily="monospace"
+            android:layout_marginBottom="10dp"/>
+
+        <!-- Today's check-in history -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_todays_logs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="false"/>
+
+    </LinearLayout>
+</ScrollView>

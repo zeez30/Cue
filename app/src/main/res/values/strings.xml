@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Cue</string>
+
+    <string name="nav_stats">Insights</string>
+
+    <!-- Bottom navigation -->
+    <string name="nav_home">Home</string>
+    <string name="nav_hunger">Check In</string>
+    <string name="nav_meal">Meals</string>
+    <string name="nav_journal">Journal</string>
+
+    <!-- Home screen -->
+    <string name="label_daily_affirmation">Today\'s Affirmation</string>
+    <string name="label_streak">Awareness Streak</string>
+    <string name="label_satisfaction_avg">Avg. Satisfaction (7 days)</string>
+    <string name="card_hunger_title">Hunger Check-In</string>
+    <string name="card_hunger_subtitle">How are you feeling right now?</string>
+    <string name="card_meal_title">Log a Meal</string>
+    <string name="card_meal_subtitle">No calories — just experience</string>
+    <string name="card_journal_title">Journal</string>
+    <string name="card_journal_subtitle">Body cues &amp; reflections</string>
+
+    <!-- Hunger check-in -->
+    <string name="hunger_screen_title">How hungry or full are you?</string>
+    <string name="hunger_before">Before meal</string>
+    <string name="hunger_after">After meal</string>
+    <string name="hunger_note_hint">Optional note (e.g. "skipped breakfast, very busy morning")</string>
+    <string name="btn_save_checkin">Save Check-In</string>
+    <string name="label_todays_checkins">Today\'s check-ins</string>
+
+    <!-- Meal logging -->
+    <string name="meal_screen_title">Log a Meal</string>
+    <string name="meal_description_hint">What did you eat? No need to be precise.</string>
+    <string name="label_satisfaction">How satisfying was it?</string>
+    <string name="label_context">Where did you eat?</string>
+    <string name="label_emotion">How were you feeling?</string>
+    <string name="meal_note_hint">Anything else to note?</string>
+    <string name="btn_save_meal">Save Meal</string>
+    <string name="label_meal_history">Meal History</string>
+
+    <!-- Journal -->
+    <string name="journal_screen_title">Body &amp; Mind Journal</string>
+    <string name="journal_body_feeling_label">How does your body feel right now?</string>
+    <string name="journal_body_feeling_hint">Physical sensations, energy, comfort…</string>
+    <string name="journal_challenged_thought_label">Challenge the food police</string>
+    <string name="journal_challenged_thought_hint">Name a diet-culture thought you had, and your reframe…</string>
+    <string name="journal_body_gratitude_label">Body gratitude</string>
+    <string name="journal_body_gratitude_hint">Something your body did for you today…</string>
+    <string name="label_mood_today">How was today overall?</string>
+    <string name="btn_save_journal">Save Entry</string>
+    <string name="label_journal_history">Past Entries</string>
+
+    <!-- Content descriptions for accessibility -->
+    <string name="cd_pixel_block">Hunger level block</string>
+    <string name="cd_mood_button">Select mood</string>
+</resources>

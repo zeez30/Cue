@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Pixel-art bar chart icon — three ascending bars representing insights/stats.
+    Drawn on a 24x24dp grid using only rectangular paths for the pixel aesthetic.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- Left bar (shortest) -->
+    <path
+        android:fillColor="@color/accent_tan"
+        android:pathData="M3,16 H7 V21 H3 Z"/>
+
+    <!-- Centre bar (medium) -->
+    <path
+        android:fillColor="@color/accent_tan"
+        android:pathData="M10,10 H14 V21 H10 Z"/>
+
+    <!-- Right bar (tallest) -->
+    <path
+        android:fillColor="@color/accent_tan"
+        android:pathData="M17,5 H21 V21 H17 Z"/>
+
+    <!-- Baseline -->
+    <path
+        android:fillColor="@color/accent_tan"
+        android:pathData="M2,21 H22 V22 H2 Z"/>
+
+</vector>

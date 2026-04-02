@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--
+        Theme.Cue — happy, vibrant palette.
+
+        Deep purple-navy backgrounds (#1A1530 / #241E42) keep the pixel-art
+        "game at night" feel while the mint, coral, mustard, and periwinkle
+        accents make the UI warm and approachable — a deliberate contrast to
+        the clinical white-and-grey look of most diet apps.
+
+        Colour roles:
+          Primary   = Dusty Grape  — nav selected, card borders
+          Secondary = Light Coral  — action buttons, hunger scale warm end
+          Tertiary  = Tropical Mint — scale fills, streak counter
+          Background = Deep navy   — restful, game-world atmosphere
+    -->
+    <style name="Theme.Cue" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+
+        <item name="colorPrimary">@color/grape</item>
+        <item name="colorPrimaryVariant">@color/periwinkle</item>
+        <item name="colorOnPrimary">@color/text_primary</item>
+
+        <item name="colorSecondary">@color/coral</item>
+        <item name="colorSecondaryVariant">@color/mint</item>
+        <item name="colorOnSecondary">@color/surface_dark</item>
+
+        <item name="colorSurface">@color/surface_card</item>
+        <item name="colorOnSurface">@color/text_primary</item>
+
+        <item name="android:colorBackground">@color/surface_dark</item>
+        <item name="colorOnBackground">@color/text_primary</item>
+
+        <item name="colorError">#FF6B6B</item>
+        <item name="colorOnError">@color/surface_dark</item>
+
+        <item name="android:statusBarColor">@color/status_bar</item>
+        <item name="android:navigationBarColor">@color/surface_dark</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <!-- Base namespace stub — required by AAPT2 for dot-notation child styles -->
+    <style name="Widget.Cue" parent="android:Widget"/>
+
+    <!-- Pixel-art card — grape border on deep navy -->
+    <style name="Widget.Cue.PixelCard" parent="Widget.MaterialComponents.CardView">
+        <item name="cardCornerRadius">0dp</item>
+        <item name="cardBackgroundColor">@color/surface_card</item>
+        <item name="cardElevation">0dp</item>
+        <item name="strokeColor">@color/grape</item>
+        <item name="strokeWidth">2dp</item>
+    </style>
+
+    <!-- Chip style — periwinkle border -->
+    <style name="Widget.Cue.PixelChip" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="chipCornerRadius">0dp</item>
+        <item name="chipBackgroundColor">@color/surface_input</item>
+        <item name="chipStrokeColor">@color/periwinkle</item>
+        <item name="chipStrokeWidth">1dp</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="checkedIconEnabled">false</item>
+    </style>
+
+    <!-- Primary button — coral fill -->
+    <style name="Widget.Cue.PixelButton" parent="Widget.MaterialComponents.Button">
+        <item name="cornerRadius">0dp</item>
+        <item name="backgroundTint">@color/coral</item>
+        <item name="android:textColor">@color/surface_dark</item>
+        <item name="android:letterSpacing">0.1</item>
+    </style>
+
+    <!-- Outlined button — mint border -->
+    <style name="Widget.Cue.PixelButtonOutlined" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="cornerRadius">0dp</item>
+        <item name="strokeColor">@color/mint</item>
+        <item name="android:textColor">@color/mint</item>
+    </style>
+
+    <!-- Section header label -->
+    <style name="Widget.Cue.SectionLabel">
+        <item name="android:textColor">@color/text_muted</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:letterSpacing">0.15</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+</resources>

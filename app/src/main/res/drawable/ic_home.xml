@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Pixel-art house icon — 24x24 grid, each rect is one "pixel" at 2x2dp.
+    Drawn on a 24dp canvas to match Material icon sizing conventions.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- Roof peak -->
+    <path
+        android:fillColor="@color/accent_tan"
+        android:pathData="M12,2 L12,2 L22,11 L20,11 L20,11 L12,4 L4,11 L2,11 Z"/>
+
+    <!-- Walls -->
+    <path
+        android:fillColor="@color/accent_tan"
+        android:pathData="M4,11 L4,22 L9,22 L9,16 L15,16 L15,22 L20,22 L20,11 Z"/>
+
+</vector>

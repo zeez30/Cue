@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Notification permission — required on Android 13+ (API 33) to post reminders -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <!-- Allows WorkManager to reschedule reminders after a device reboot -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <!-- Permits exact-alarm scheduling on supported devices -->
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
+
+    <application
+        android:name=".CueApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Cue">
+
+        <!--
+            OnboardingActivity is the LAUNCHER entry point.
+            It checks PrefsManager.isOnboardingDone() in onCreate() and
+            immediately starts MainActivity if onboarding has been completed.
+            This pattern avoids a second SplashActivity and keeps the back stack clean.
+        -->
+        <activity
+            android:name=".ui.onboarding.OnboardingActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".ui.MainActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize"/>
+
+        <!--
+            ReminderReceiver handles BOOT_COMPLETED.
+            WorkManager re-enqueues its own periodic work after reboot automatically
+            (guaranteed delivery), but the receiver is kept for API < 33 compatibility
+            and as a hook for any future boot-time initialisation logic.
+        -->
+        <receiver
+            android:name=".util.ReminderReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+
+    </application>
+
+</manifest>

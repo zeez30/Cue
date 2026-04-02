@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Adaptive icon foreground layer — a pixel-art sprout/leaf glyph
+    centred on a 108x108dp safe-zone canvas.
+    The glyph fits within the 72x72dp inner safe zone (18dp margin each side).
+
+    Each rect is 6x6dp, drawn on a grid for crisp pixel rendering at all densities.
+    Pixel layout (12x12 grid within 72x72dp area, offset by 18dp):
+
+        . . . . . S S . . . . .
+        . . . . S S S S . . . .
+        . . . S S S S S S . . .
+        . . S S . S S . S S . .
+        . . S S . S S . S S . .
+        . . . S S S S S S . . .
+        . . . . S S S S . . . .
+        . . . . . S S . . . . .
+        . . . . . S S . . . . .
+        . . . . . S S . . . . .
+        . . . S S S S S S . . .  ← roots / base bar
+        . . . . . . . . . . . .
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Stem -->
+    <path android:fillColor="#F5F5FF"
+        android:pathData="M51,30 H57 V78 H51 Z"/>
+
+    <!-- Left leaf -->
+    <path android:fillColor="#6457A6"
+        android:pathData="M33,42 H51 V48 H33 Z
+                          M33,48 H39 V54 H33 Z
+                          M39,36 H51 V42 H39 Z"/>
+
+    <!-- Right leaf -->
+    <path android:fillColor="#6457A6"
+        android:pathData="M57,36 H69 V42 H57 Z
+                          M57,42 H75 V48 H57 Z
+                          M69,48 H75 V54 H69 Z"/>
+
+    <!-- Root bar -->
+    <path android:fillColor="#FFE347"
+        android:pathData="M39,78 H69 V84 H39 Z"/>
+
+    <!-- Root left -->
+    <path android:fillColor="#FFE347"
+        android:pathData="M33,84 H45 V90 H33 Z"/>
+
+    <!-- Root right -->
+    <path android:fillColor="#FFE347"
+        android:pathData="M63,84 H75 V90 H63 Z"/>
+
+</vector>
