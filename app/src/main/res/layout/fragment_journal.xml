@@ -11,7 +11,16 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="16dp">
-
+        <!-- brief hint so users know what this screen does -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Fill in one or more prompts. All fields are optional."
+            android:textColor="@color/text_muted"
+            android:textSize="12sp"
+            android:fontFamily="monospace"
+            android:lineSpacingMultiplier="1.4"
+            android:layout_marginBottom="16dp"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
