@@ -15,6 +15,27 @@ import com.zeez.nourishquest.util.DateUtils;
 // RecyclerView adapter for the meal history list.
 // Uses ListAdapter + DiffUtil so only changed rows rebind on LiveData updates.
 public class MealHistoryAdapter extends ListAdapter<MealEntry, MealHistoryAdapter.ViewHolder> {
+    // Callback fired when the user swipes to delete a meal entry
+    public interface OnDeleteListener {
+        void onDelete(MealEntry entry);
+    }
+
+    // Holds a reference to whoever set up the delete listener (MealFragment)
+    private OnDeleteListener onDeleteListener;
+
+    public void setOnDeleteListener(OnDeleteListener listener) {
+        this.onDeleteListener = listener;
+    }
+
+    // Returns the item at a given position — needed by the swipe handler in MealFragment
+    public MealEntry getItemAt(int position) {
+        return getItem(position);
+    }
+
+    // Returns the listener so the swipe handler can call it
+    public OnDeleteListener getOnDeleteListener() {
+        return onDeleteListener;
+    }
 
     public MealHistoryAdapter() {
         super(DIFF_CALLBACK);

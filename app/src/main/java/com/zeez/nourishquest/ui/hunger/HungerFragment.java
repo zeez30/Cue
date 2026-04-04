@@ -14,6 +14,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.zeez.nourishquest.databinding.FragmentHungerBinding;
 import com.zeez.nourishquest.util.HungerScaleHelper;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.RecyclerView;
 
 // Hunger/fullness check-in screen.
 // The pixel scale is built programmatically — 10 View blocks added to a LinearLayout.
@@ -117,6 +119,27 @@ public class HungerFragment extends Fragment {
         adapter = new HungerLogAdapter();
         binding.recyclerTodaysLogs.setLayoutManager(new LinearLayoutManager(requireContext()));
         binding.recyclerTodaysLogs.setAdapter(adapter);
+        // Wire up the delete callback — tells the ViewModel to remove the entry from the DB
+        adapter.setOnDeleteListener(log -> viewModel.deleteLog(log.getId()));
+
+// Swipe left on any row to delete it
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView rv,
+                                  @NonNull RecyclerView.ViewHolder vh,
+                                  @NonNull RecyclerView.ViewHolder target) {
+                // Drag-to-reorder not supported
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                int pos = viewHolder.getAdapterPosition();
+                // Fire the delete callback then show confirmation
+                adapter.getOnDeleteListener().onDelete(adapter.getItemAt(pos));
+                Toast.makeText(requireContext(), "Check-in deleted", Toast.LENGTH_SHORT).show();
+            }
+        }).attachToRecyclerView(binding.recyclerTodaysLogs);
     }
 
     private void observeViewModel() {

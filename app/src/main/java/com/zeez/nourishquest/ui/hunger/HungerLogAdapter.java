@@ -16,10 +16,32 @@ import com.zeez.nourishquest.util.HungerScaleHelper;
 // RecyclerView adapter for today's hunger check-in history.
 // Uses ListAdapter + DiffUtil so only changed rows are rebound when LiveData emits.
 public class HungerLogAdapter extends ListAdapter<HungerLog, HungerLogAdapter.ViewHolder> {
+    // Callback fired when the user swipes to delete an item
+    public interface OnDeleteListener {
+        void onDelete(HungerLog log);
+    }
+
+    // Holds a reference to whoever set up the delete listener (HungerFragment)
+    private OnDeleteListener onDeleteListener;
+
+    public void setOnDeleteListener(OnDeleteListener listener) {
+        this.onDeleteListener = listener;
+    }
+
+    // Returns the item at a given position — needed by the swipe handler in HungerFragment
+    public HungerLog getItemAt(int position) {
+        return getItem(position);
+    }
+
+    // Returns the listener so the swipe handler can call it
+    public OnDeleteListener getOnDeleteListener() {
+        return onDeleteListener;
+    }
 
     public HungerLogAdapter() {
         super(DIFF_CALLBACK);
     }
+
 
     // DiffUtil compares items by ID and content to avoid unnecessary redraws
     private static final DiffUtil.ItemCallback<HungerLog> DIFF_CALLBACK =

@@ -16,6 +16,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.zeez.nourishquest.R;
 import com.zeez.nourishquest.databinding.FragmentMealBinding;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.RecyclerView;
 
 // Meal logging screen.
 // Three Spinners replace the old horizontal chip groups — easier to tap on small screens.
@@ -121,7 +123,9 @@ public class MealFragment extends Fragment {
 
             // Description is the only required field
             if (description.isEmpty()) {
-                binding.editFoodDescription.setError("What did you eat?");
+                // Point the user directly to the empty field with a clear message
+                binding.editFoodDescription.setError("Please describe what you ate");
+                binding.editFoodDescription.requestFocus();
                 return;
             }
 
@@ -152,6 +156,26 @@ public class MealFragment extends Fragment {
         adapter = new MealHistoryAdapter();
         binding.recyclerMealHistory.setLayoutManager(new LinearLayoutManager(requireContext()));
         binding.recyclerMealHistory.setAdapter(adapter);
+        // Wire up the delete callback
+        adapter.setOnDeleteListener(entry -> viewModel.deleteMeal(entry.getId()));
+
+// Swipe left on any row to delete it
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView rv,
+                                  @NonNull RecyclerView.ViewHolder vh,
+                                  @NonNull RecyclerView.ViewHolder target) {
+                // Drag-to-reorder not supported
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                int pos = viewHolder.getAdapterPosition();
+                adapter.getOnDeleteListener().onDelete(adapter.getItemAt(pos));
+                Toast.makeText(requireContext(), "Meal deleted", Toast.LENGTH_SHORT).show();
+            }
+        }).attachToRecyclerView(binding.recyclerMealHistory);
     }
 
     private void observeViewModel() {

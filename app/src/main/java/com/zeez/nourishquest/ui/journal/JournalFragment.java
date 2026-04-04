@@ -13,6 +13,8 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.zeez.nourishquest.databinding.FragmentJournalBinding;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.RecyclerView;
 
 // Body journal screen — three IE-based prompts plus a mood selector.
 // At least one prompt must be filled in before saving.
@@ -103,6 +105,26 @@ public class JournalFragment extends Fragment {
         adapter = new JournalHistoryAdapter();
         binding.recyclerJournalHistory.setLayoutManager(new LinearLayoutManager(requireContext()));
         binding.recyclerJournalHistory.setAdapter(adapter);
+        // Wire up the delete callback
+        adapter.setOnDeleteListener(entry -> viewModel.deleteEntry(entry.getId()));
+
+// Swipe left on any row to delete it
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView rv,
+                                  @NonNull RecyclerView.ViewHolder vh,
+                                  @NonNull RecyclerView.ViewHolder target) {
+                // Drag-to-reorder not supported
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                int pos = viewHolder.getAdapterPosition();
+                adapter.getOnDeleteListener().onDelete(adapter.getItemAt(pos));
+                Toast.makeText(requireContext(), "Entry deleted", Toast.LENGTH_SHORT).show();
+            }
+        }).attachToRecyclerView(binding.recyclerJournalHistory);
     }
 
     private void observeViewModel() {

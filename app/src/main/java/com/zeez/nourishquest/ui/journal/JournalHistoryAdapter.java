@@ -15,6 +15,27 @@ import com.zeez.nourishquest.util.DateUtils;
 // RecyclerView adapter for the journal history list.
 // Shows a snippet of each entry — full text is truncated to 2 lines per field.
 public class JournalHistoryAdapter extends ListAdapter<JournalEntry, JournalHistoryAdapter.ViewHolder> {
+    // Callback fired when the user swipes to delete a journal entry
+    public interface OnDeleteListener {
+        void onDelete(JournalEntry entry);
+    }
+
+    // Holds a reference to whoever set up the delete listener (JournalFragment)
+    private OnDeleteListener onDeleteListener;
+
+    public void setOnDeleteListener(OnDeleteListener listener) {
+        this.onDeleteListener = listener;
+    }
+
+    // Returns the item at a given position — needed by the swipe handler in JournalFragment
+    public JournalEntry getItemAt(int position) {
+        return getItem(position);
+    }
+
+    // Returns the listener so the swipe handler can call it
+    public OnDeleteListener getOnDeleteListener() {
+        return onDeleteListener;
+    }
 
     public JournalHistoryAdapter() {
         super(DIFF_CALLBACK);
