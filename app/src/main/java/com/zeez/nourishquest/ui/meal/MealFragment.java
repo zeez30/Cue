@@ -145,10 +145,17 @@ public class MealFragment extends Fragment {
                     note
             );
 
-            // Reset form after save
             binding.editFoodDescription.setText("");
             binding.editMealNote.setText("");
             binding.satisfactionSlider.setValue(5f);
+
+            // Brief visual confirmation on the button itself
+            binding.btnSaveMeal.setText("SAVED ✓");
+            binding.btnSaveMeal.setEnabled(false);
+            binding.btnSaveMeal.postDelayed(() -> {
+                binding.btnSaveMeal.setText("LOG MEAL");
+                binding.btnSaveMeal.setEnabled(true);
+            }, 1500);
         });
     }
 

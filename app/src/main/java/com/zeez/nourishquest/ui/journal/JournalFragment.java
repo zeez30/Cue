@@ -94,10 +94,17 @@ public class JournalFragment extends Fragment {
 
             viewModel.saveEntry(bodyFeeling, challengedThought, bodyGratitude, mood);
 
-            // Clear fields after saving
             binding.editBodyFeeling.setText("");
             binding.editChallengedThought.setText("");
             binding.editBodyGratitude.setText("");
+
+            // Brief visual confirmation on the button itself
+            binding.btnSaveJournal.setText("SAVED ✓");
+            binding.btnSaveJournal.setEnabled(false);
+            binding.btnSaveJournal.postDelayed(() -> {
+                binding.btnSaveJournal.setText("SAVE ENTRY");
+                binding.btnSaveJournal.setEnabled(true);
+            }, 1500);
         });
     }
 

@@ -112,6 +112,14 @@ public class HungerFragment extends Fragment {
                     ? binding.editNote.getText().toString().trim() : "";
             viewModel.saveCheckIn(level, selectedPhase, note);
             binding.editNote.setText("");
+
+            // Brief visual confirmation on the button itself
+            binding.btnSaveCheckIn.setText("SAVED ✓");
+            binding.btnSaveCheckIn.setEnabled(false);
+            binding.btnSaveCheckIn.postDelayed(() -> {
+                binding.btnSaveCheckIn.setText("SAVE CHECK-IN");
+                binding.btnSaveCheckIn.setEnabled(true);
+            }, 1500);
         });
     }
 
