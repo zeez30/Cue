@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/surface_card"
+    android:paddingTop="8dp"
+    android:paddingBottom="32dp"
+    android:paddingStart="20dp"
+    android:paddingEnd="20dp">
+
+    <!-- Drag handle -->
+    <View
+        android:layout_width="40dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="20dp"
+        android:background="@color/text_muted"/>
+
+    <!-- Title -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NEED TO TALK TO SOMEONE?"
+        android:textColor="@color/mustard"
+        android:textSize="13sp"
+        android:fontFamily="monospace"
+        android:letterSpacing="0.08"
+        android:layout_marginBottom="4dp"/>
+
+    <!-- Subtitle -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="You don't have to deal with this alone. These services are free and confidential."
+        android:textColor="@color/text_muted"
+        android:textSize="13sp"
+        android:lineSpacingMultiplier="1.4"
+        android:layout_marginBottom="24dp"/>
+
+    <!-- Beat -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BEAT"
+        android:textColor="@color/coral"
+        android:textSize="11sp"
+        android:fontFamily="monospace"
+        android:letterSpacing="0.1"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Eating disorder support"
+        android:textColor="@color/cream"
+        android:textSize="13sp"
+        android:layout_marginBottom="8dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="16dp">
+
+        <Button
+            android:id="@+id/btn_beat_call"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:text="0808 801 0677"
+            android:textSize="11sp"
+            android:fontFamily="monospace"
+            style="@style/Widget.Cue.PixelButton"/>
+
+        <Button
+            android:id="@+id/btn_beat_web"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Website"
+            android:textSize="11sp"
+            android:fontFamily="monospace"
+            style="@style/Widget.Cue.PixelButtonOutlined"/>
+
+    </LinearLayout>
+
+    <!-- Divider -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/surface_dark"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Samaritans -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SAMARITANS"
+        android:textColor="@color/coral"
+        android:textSize="11sp"
+        android:fontFamily="monospace"
+        android:letterSpacing="0.1"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="24/7 emotional support"
+        android:textColor="@color/cream"
+        android:textSize="13sp"
+        android:layout_marginBottom="8dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="16dp">
+
+        <Button
+            android:id="@+id/btn_samaritans_call"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:text="116 123"
+            android:textSize="11sp"
+            android:fontFamily="monospace"
+            style="@style/Widget.Cue.PixelButton"/>
+
+        <Button
+            android:id="@+id/btn_samaritans_web"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Website"
+            android:textSize="11sp"
+            android:fontFamily="monospace"
+            style="@style/Widget.Cue.PixelButtonOutlined"/>
+
+    </LinearLayout>
+
+    <!-- Divider -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/surface_dark"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Mind -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MIND"
+        android:textColor="@color/coral"
+        android:textSize="11sp"
+        android:fontFamily="monospace"
+        android:letterSpacing="0.1"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mental health support"
+        android:textColor="@color/cream"
+        android:textSize="13sp"
+        android:layout_marginBottom="8dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="16dp">
+
+        <Button
+            android:id="@+id/btn_mind_call"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:text="0300 123 3393"
+            android:textSize="11sp"
+            android:fontFamily="monospace"
+            style="@style/Widget.Cue.PixelButton"/>
+
+        <Button
+            android:id="@+id/btn_mind_web"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Website"
+            android:textSize="11sp"
+            android:fontFamily="monospace"
+            style="@style/Widget.Cue.PixelButtonOutlined"/>
+
+    </LinearLayout>
+
+    <!-- Divider -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/surface_dark"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- SANE -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SANE"
+        android:textColor="@color/coral"
+        android:textSize="11sp"
+        android:fontFamily="monospace"
+        android:letterSpacing="0.1"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mental health crisis support"
+        android:textColor="@color/cream"
+        android:textSize="13sp"
+        android:layout_marginBottom="8dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="24dp">
+
+        <Button
+            android:id="@+id/btn_sane_call"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:text="0300 304 7000"
+            android:textSize="11sp"
+            android:fontFamily="monospace"
+            style="@style/Widget.Cue.PixelButton"/>
+
+        <Button
+            android:id="@+id/btn_sane_web"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Website"
+            android:textSize="11sp"
+            android:fontFamily="monospace"
+            style="@style/Widget.Cue.PixelButtonOutlined"/>
+
+    </LinearLayout>
+
+    <!-- Close -->
+    <Button
+        android:id="@+id/btn_close"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CLOSE"
+        android:textSize="11sp"
+        android:fontFamily="monospace"
+        style="@style/Widget.Cue.PixelButtonOutlined"/>
+
+</LinearLayout>

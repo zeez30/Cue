@@ -14,6 +14,7 @@ import androidx.navigation.Navigation;
 import com.zeez.nourishquest.R;
 import com.zeez.nourishquest.databinding.FragmentHomeBinding;
 import com.zeez.nourishquest.util.PrefsManager;
+import com.zeez.nourishquest.ui.support.SupportBottomSheet;
 
 import java.util.Locale;
 
@@ -84,6 +85,9 @@ public class HomeFragment extends Fragment {
                 Navigation.findNavController(v).navigate(R.id.action_home_to_meal));
         binding.cardJournal.setOnClickListener(v ->
                 Navigation.findNavController(v).navigate(R.id.action_home_to_journal));
+        binding.btnSupport.setOnClickListener(v -> {
+            SupportBottomSheet sheet = new SupportBottomSheet();
+            sheet.show(getParentFragmentManager(), "support");});
     }
 
     @Override
