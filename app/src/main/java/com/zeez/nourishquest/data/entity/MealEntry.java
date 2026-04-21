@@ -4,9 +4,6 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-// Stores a single meal log entry.
-// Deliberately no calorie field — satisfaction and context are the focus.
-// mealType added in DB v2 — nullable so old rows aren't broken.
 @Entity(tableName = "meal_entries")
 public class MealEntry {
 
@@ -16,23 +13,23 @@ public class MealEntry {
     @ColumnInfo(name = "timestamp")
     private long timestamp;
 
-    // Free-text description, no portion sizes required
+    // Qualitative description of the meal
     @ColumnInfo(name = "food_description")
     private String foodDescription;
 
-    // 1 (unsatisfying) to 10 (deeply satisfying)
+    // User satisfaction score from 1 to 10
     @ColumnInfo(name = "satisfaction_rating")
     private int satisfactionRating;
 
-    // HOME, RESTAURANT, DESK, CAR, SOCIAL, OTHER
+    // Environmental context of the meal
     @ColumnInfo(name = "eating_context")
     private String eatingContext;
 
-    // CALM, HAPPY, STRESSED, ANXIOUS, BORED, SAD, RUSHED, OTHER
+    // Mood or emotional state during consumption
     @ColumnInfo(name = "emotional_state")
     private String emotionalState;
 
-    // BREAKFAST, LUNCH, DINNER, SNACK — nullable (added in v2)
+    // Categorization added in database version 2
     @ColumnInfo(name = "meal_type")
     private String mealType;
 
@@ -50,6 +47,7 @@ public class MealEntry {
         this.note = note;
     }
 
+    // Getters and Setters
     public long getId() { return id; }
     public void setId(long id) { this.id = id; }
 

@@ -20,9 +20,6 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 // Meal logging screen.
-// Three Spinners replace the old horizontal chip groups — easier to tap on small screens.
-// Meal type, eating context, and emotional state are all separate fields because
-// they capture different things about the same meal.
 public class MealFragment extends Fragment {
 
     private FragmentMealBinding binding;

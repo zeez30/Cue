@@ -10,8 +10,6 @@ import androidx.lifecycle.Observer;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 // LiveData that fires each observer exactly once.
-// Fixes the problem where Toasts replay every time the screen rotates,
-// because standard MutableLiveData re-delivers its last value to new observers.
 public class SingleLiveEvent<T> extends MutableLiveData<T> {
 
     private final AtomicBoolean pending = new AtomicBoolean(false);

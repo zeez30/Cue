@@ -4,8 +4,6 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-// Stores a single body journal entry with three IE-based prompts.
-// All three text fields are optional — users can fill in one, two, or all three.
 @Entity(tableName = "journal_entries")
 public class JournalEntry {
 
@@ -15,19 +13,19 @@ public class JournalEntry {
     @ColumnInfo(name = "timestamp")
     private long timestamp;
 
-    // Prompt 1: physical body sensations right now
+    // Physical sensations or observations
     @ColumnInfo(name = "body_feeling")
     private String bodyFeeling;
 
-    // Prompt 2: a diet-culture thought and a reframe of it
+    // Identifying and reframing diet culture thoughts
     @ColumnInfo(name = "challenged_thought")
     private String challengedThought;
 
-    // Prompt 3: something the body did today — function, not appearance
+    // Focusing on bodily function rather than appearance
     @ColumnInfo(name = "body_gratitude")
     private String bodyGratitude;
 
-    // GREAT, GOOD, OKAY, DIFFICULT, ROUGH
+    // Overall mood state for the entry
     @ColumnInfo(name = "mood")
     private String mood;
 
@@ -40,6 +38,7 @@ public class JournalEntry {
         this.mood = mood;
     }
 
+    // Getters and Setters
     public long getId() { return id; }
     public void setId(long id) { this.id = id; }
 

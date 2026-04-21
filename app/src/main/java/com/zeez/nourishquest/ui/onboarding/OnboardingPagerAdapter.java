@@ -6,7 +6,6 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 // Provides the five onboarding slide Fragments to the ViewPager2.
-// FragmentStateAdapter handles Fragment lifecycle automatically — creation, destruction, state saving.
 public class OnboardingPagerAdapter extends FragmentStateAdapter {
 
     private static final int PAGE_COUNT = 5;

@@ -1,5 +1,7 @@
 package com.zeez.nourishquest.util;
 
+import com.zeez.nourishquest.CueApplication;
+
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -12,15 +14,12 @@ import androidx.work.WorkManager;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 
-import com.zeez.nourishquest.CueApplication;
 import com.zeez.nourishquest.R;
 import com.zeez.nourishquest.ui.MainActivity;
 
 import java.util.concurrent.TimeUnit;
 
 // WorkManager worker that posts a daily check-in reminder notification.
-// WorkManager handles battery optimisation, Doze mode, and reboot rescheduling automatically.
-// Notification is silent (no sound) to avoid disrupting meals.
 public class MindfulEatingReminderWorker extends Worker {
 
     private static final String WORK_TAG = "cue_daily_reminder";

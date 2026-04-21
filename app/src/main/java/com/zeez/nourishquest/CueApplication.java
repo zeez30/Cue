@@ -7,27 +7,31 @@ import android.os.Build;
 
 public class CueApplication extends Application {
 
-    // Channel ID used when posting check-in reminder notifications
+    // Unique identifier for the mindful check-in notification channel
     public static final String REMINDER_CHANNEL_ID = "cue_mindful_reminders";
     public static final String REMINDER_CHANNEL_NAME = "Mindful Eating Reminders";
 
     @Override
     public void onCreate() {
         super.onCreate();
-        createNotificationChannel();
+        initializeNotificationChannels();
     }
 
-    // Notification channels must be registered before any notification is posted.
-    // On API < 26 this is a no-op — channels don't exist below Android 8.
-    private void createNotificationChannel() {
+    /**
+     * Registers notification channels for Android 8.0 (API 26) and above.
+     * This setup is required before any notifications can be dispatched to the user.
+     */
+    private void initializeNotificationChannels() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel channel = new NotificationChannel(
                     REMINDER_CHANNEL_ID,
                     REMINDER_CHANNEL_NAME,
                     NotificationManager.IMPORTANCE_DEFAULT
             );
-            channel.setDescription("Gentle reminders to check in with your hunger and fullness.");
-            // Silent — no sound so it doesn't interrupt meals
+
+            channel.setDescription("Gentle reminders to check in with hunger and fullness signals.");
+
+            // Audio is disabled to minimize interruption during meal times
             channel.setSound(null, null);
 
             NotificationManager manager = getSystemService(NotificationManager.class);

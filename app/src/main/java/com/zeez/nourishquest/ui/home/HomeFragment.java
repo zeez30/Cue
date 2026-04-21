@@ -18,8 +18,6 @@ import com.zeez.nourishquest.ui.support.SupportBottomSheet;
 
 import java.util.Locale;
 
-// Home screen — shows daily affirmation, awareness streak, satisfaction average,
-// and quick-action tiles to the three main features.
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
@@ -42,7 +40,7 @@ public class HomeFragment extends Fragment {
         setupQuickActions();
     }
 
-    // Shows the user's name in the title if they set one during onboarding
+    // Updates UI title with personalized name from SharedPreferences
     private void setupGreeting() {
         PrefsManager prefs = new PrefsManager(requireContext());
         String name = prefs.getPlayerName();
@@ -51,21 +49,23 @@ public class HomeFragment extends Fragment {
         }
     }
 
+    // Bind ViewModel LiveData to UI components
     private void observeViewModel() {
         viewModel.getDailyAffirmation().observe(getViewLifecycleOwner(), affirmation ->
                 binding.textAffirmation.setText(affirmation));
 
+        // Updates streak display and handles pluralization
         viewModel.getCheckInStreak().observe(getViewLifecycleOwner(), streak -> {
             binding.textStreakCount.setText(String.valueOf(streak));
             binding.textStreakLabel.setText(streak == 1 ? "day streak" : "days streak");
         });
 
+        // Displays average satisfaction score or placeholder if empty
         viewModel.getWeeklySatisfactionAverage().observe(getViewLifecycleOwner(), avg -> {
             if (avg != null && avg > 0) {
                 binding.textSatisfactionAvg.setText(
                         String.format(Locale.getDefault(), "%.1f / 10", avg));
             } else {
-                // No data yet
                 binding.textSatisfactionAvg.setText("—");
             }
         });
@@ -77,23 +77,28 @@ public class HomeFragment extends Fragment {
         });
     }
 
-    // Each tile navigates to its respective fragment via the NavController
+    // Navigation logic for main feature tiles
     private void setupQuickActions() {
         binding.cardHungerCheckin.setOnClickListener(v ->
                 Navigation.findNavController(v).navigate(R.id.action_home_to_hunger));
+
         binding.cardLogMeal.setOnClickListener(v ->
                 Navigation.findNavController(v).navigate(R.id.action_home_to_meal));
+
         binding.cardJournal.setOnClickListener(v ->
                 Navigation.findNavController(v).navigate(R.id.action_home_to_journal));
+
+        // Triggers the help/support bottom sheet
         binding.btnSupport.setOnClickListener(v -> {
             SupportBottomSheet sheet = new SupportBottomSheet();
-            sheet.show(getParentFragmentManager(), "support");});
+            sheet.show(getParentFragmentManager(), "support");
+        });
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        // Null out binding to prevent memory leaks when the fragment view is destroyed
+        // Clear binding to avoid memory leaks
         binding = null;
     }
 }

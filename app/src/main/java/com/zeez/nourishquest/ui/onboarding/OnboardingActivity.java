@@ -13,8 +13,6 @@ import com.zeez.nourishquest.ui.MainActivity;
 import com.zeez.nourishquest.util.MindfulEatingReminderWorker;
 import com.zeez.nourishquest.util.PrefsManager;
 
-// Shown on first launch only. Five slides explaining what Cue is and what it doesn't do.
-// Name input has moved into OnboardingSlideFragment (slide 4) so it's always scrollable and tappable.
 public class OnboardingActivity extends AppCompatActivity {
 
     private ViewPager2 viewPager;
@@ -33,10 +31,7 @@ public class OnboardingActivity extends AppCompatActivity {
 
         prefs = new PrefsManager(this);
 
-        // REMOVE THIS LINE BEFORE FINAL SUBMISSION — resets onboarding for testing
-        prefs.setOnboardingDone(false);
-
-        // Skip onboarding for returning users
+        // Redirect returning users if onboarding has previously been completed
         if (prefs.isOnboardingDone()) {
             startActivity(new Intent(this, MainActivity.class));
             finish();
@@ -53,6 +48,7 @@ public class OnboardingActivity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
         viewPager.setUserInputEnabled(true);
 
+        // Listener to update UI elements based on the current scroll position
         viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {
@@ -65,6 +61,7 @@ public class OnboardingActivity extends AppCompatActivity {
         updateControls(0);
     }
 
+    // Progresses the ViewPager to the next slide or finishes the workflow
     private void advancePage() {
         int current = viewPager.getCurrentItem();
         if (current < TOTAL_PAGES - 1) {
@@ -74,12 +71,11 @@ public class OnboardingActivity extends AppCompatActivity {
         }
     }
 
-    // Updates the page indicator and button labels based on current position
+    // Refreshes the page indicator and button text based on current index
     private void updateControls(int position) {
         textPageIndicator.setText((position + 1) + " / " + TOTAL_PAGES);
 
         if (position == TOTAL_PAGES - 1) {
-            // Last slide — hide skip, change Next to Begin
             btnNext.setText("BEGIN  ▶");
             btnSkip.setVisibility(android.view.View.GONE);
         } else {
@@ -88,10 +84,12 @@ public class OnboardingActivity extends AppCompatActivity {
         }
     }
 
-    // Called when user taps Begin or Skip — marks onboarding done and launches the app
+    /**
+     * Finalizes the onboarding state.
+     * Persists the completion flag and schedules periodic background work.
+     */
     private void finishOnboarding() {
         prefs.setOnboardingDone(true);
-        // Name is saved by OnboardingSlideFragment when slide 4 is destroyed
         MindfulEatingReminderWorker.scheduleDaily(this);
         startActivity(new Intent(this, MainActivity.class));
         finish();

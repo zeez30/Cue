@@ -13,27 +13,24 @@ import com.zeez.nourishquest.databinding.ItemHungerLogBinding;
 import com.zeez.nourishquest.util.DateUtils;
 import com.zeez.nourishquest.util.HungerScaleHelper;
 
-// RecyclerView adapter for today's hunger check-in history.
-// Uses ListAdapter + DiffUtil so only changed rows are rebound when LiveData emits.
 public class HungerLogAdapter extends ListAdapter<HungerLog, HungerLogAdapter.ViewHolder> {
-    // Callback fired when the user swipes to delete an item
+
+    // Interface for handling item deletion events
     public interface OnDeleteListener {
         void onDelete(HungerLog log);
     }
 
-    // Holds a reference to whoever set up the delete listener (HungerFragment)
     private OnDeleteListener onDeleteListener;
 
     public void setOnDeleteListener(OnDeleteListener listener) {
         this.onDeleteListener = listener;
     }
 
-    // Returns the item at a given position — needed by the swipe handler in HungerFragment
+    // Helper to retrieve item by position for the swipe handler
     public HungerLog getItemAt(int position) {
         return getItem(position);
     }
 
-    // Returns the listener so the swipe handler can call it
     public OnDeleteListener getOnDeleteListener() {
         return onDeleteListener;
     }
@@ -42,8 +39,7 @@ public class HungerLogAdapter extends ListAdapter<HungerLog, HungerLogAdapter.Vi
         super(DIFF_CALLBACK);
     }
 
-
-    // DiffUtil compares items by ID and content to avoid unnecessary redraws
+    // Utility to calculate updates between two lists efficiently
     private static final DiffUtil.ItemCallback<HungerLog> DIFF_CALLBACK =
             new DiffUtil.ItemCallback<HungerLog>() {
                 @Override
@@ -73,7 +69,6 @@ public class HungerLogAdapter extends ListAdapter<HungerLog, HungerLogAdapter.Vi
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-
         private final ItemHungerLogBinding binding;
 
         ViewHolder(ItemHungerLogBinding binding) {
@@ -81,17 +76,19 @@ public class HungerLogAdapter extends ListAdapter<HungerLog, HungerLogAdapter.Vi
             this.binding = binding;
         }
 
+        // Binds entity data to the item layout components
         void bind(HungerLog log) {
             binding.textLogTime.setText(DateUtils.formatTime(log.getTimestamp()));
             binding.textLogPhase.setText(log.getMealPhase().equals("BEFORE")
                     ? "Before meal" : "After meal");
             binding.textLogLevel.setText(String.valueOf(log.getScaleLevel()));
             binding.textLogLabel.setText(HungerScaleHelper.getLabel(log.getScaleLevel()));
-            // Colour dot reflects the scale level colour
+
+            // Apply scale color to the status indicator
             binding.viewLevelDot.setBackgroundColor(
                     HungerScaleHelper.getColour(log.getScaleLevel()));
 
-            // Only show note if one was entered
+            // Conditional visibility for user notes
             if (log.getNote() != null && !log.getNote().isEmpty()) {
                 binding.textLogNote.setVisibility(android.view.View.VISIBLE);
                 binding.textLogNote.setText(log.getNote());

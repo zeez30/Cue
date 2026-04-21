@@ -4,9 +4,6 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-// Stores a single hunger or fullness check-in.
-// mealPhase is either "BEFORE" (hunger going into a meal) or "AFTER" (fullness coming out).
-// scaleLevel is 1–10 following the Tribole & Resch hunger/fullness scale.
 @Entity(tableName = "hunger_logs")
 public class HungerLog {
 
@@ -16,11 +13,11 @@ public class HungerLog {
     @ColumnInfo(name = "timestamp")
     private long timestamp;
 
-    // 1 = painfully hungry, 5 = neutral, 10 = painfully full
+    // Level 1 to 10 based on IE scale
     @ColumnInfo(name = "scale_level")
     private int scaleLevel;
 
-    // "BEFORE" or "AFTER" meal
+    // Track if entry is before or after eating
     @ColumnInfo(name = "meal_phase")
     private String mealPhase;
 
@@ -34,6 +31,7 @@ public class HungerLog {
         this.note = note;
     }
 
+    // Getters and Setters
     public long getId() { return id; }
     public void setId(long id) { this.id = id; }
 

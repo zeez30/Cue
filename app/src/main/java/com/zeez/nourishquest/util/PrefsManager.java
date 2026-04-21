@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 // Typed wrapper around SharedPreferences.
-// All preference keys live here — no scattered key strings across the codebase.
+
 public final class PrefsManager {
 
     private static final String PREFS_NAME        = "cue_prefs";

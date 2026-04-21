@@ -1,7 +1,6 @@
 package com.zeez.nourishquest.ui.hunger;
 
 import android.app.Application;
-
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
@@ -13,17 +12,16 @@ import com.zeez.nourishquest.util.SingleLiveEvent;
 
 import java.util.List;
 
-// ViewModel for the hunger check-in screen.
-// Survives rotation — the user never loses a partially built check-in.
-// saveResult uses SingleLiveEvent so the confirmation Toast only fires once.
 public class HungerViewModel extends AndroidViewModel {
 
     private final HungerRepository repository;
 
-    // Currently selected position on the 1–10 scale
+    // Default selection initialized to the neutral midpoint of the scale
     private final MutableLiveData<Integer> selectedLevel = new MutableLiveData<>(5);
-    // Fires once when a save completes — drives the Toast in HungerFragment
+
+    // Custom event type to ensure UI notifications trigger only once
     private final SingleLiveEvent<Boolean> saveResult = new SingleLiveEvent<>();
+
     private final LiveData<List<HungerLog>> todaysLogs;
 
     public HungerViewModel(@NonNull Application application) {
@@ -32,17 +30,25 @@ public class HungerViewModel extends AndroidViewModel {
         todaysLogs = repository.getTodaysLogs();
     }
 
-    public void setSelectedLevel(int level) { selectedLevel.setValue(level); }
+    public void setSelectedLevel(int level) {
+        selectedLevel.setValue(level);
+    }
 
+    // Getters for UI observation
     public LiveData<Integer> getSelectedLevel() { return selectedLevel; }
     public LiveData<Boolean> getSaveResult() { return saveResult; }
     public LiveData<List<HungerLog>> getTodaysLogs() { return todaysLogs; }
 
+    /**
+     * Constructs a new HungerLog entity and persists it via the repository.
+     * Updates saveResult to trigger a UI confirmation.
+     */
     public void saveCheckIn(int level, String phase, String note) {
         repository.insert(new HungerLog(System.currentTimeMillis(), level, phase, note));
         saveResult.setValue(true);
     }
 
+    // Requests deletion of a specific log entry by ID
     public void deleteLog(long id) {
         repository.deleteById(id);
     }

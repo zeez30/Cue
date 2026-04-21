@@ -16,9 +16,6 @@ import com.zeez.nourishquest.databinding.FragmentJournalBinding;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
-// Body journal screen — three IE-based prompts plus a mood selector.
-// At least one prompt must be filled in before saving.
-// Mood is selected by tapping emoji tiles — faster than a dropdown on low-mood days.
 public class JournalFragment extends Fragment {
 
     private FragmentJournalBinding binding;

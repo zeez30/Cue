@@ -1,7 +1,6 @@
 package com.zeez.nourishquest.ui.home;
 
 import android.app.Application;
-
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
@@ -16,8 +15,6 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-// Provides data for the home screen.
-// The streak calculation runs on a background thread because it queries the DB synchronously.
 public class HomeViewModel extends AndroidViewModel {
 
     private final HungerRepository hungerRepository;
@@ -33,8 +30,11 @@ public class HomeViewModel extends AndroidViewModel {
         super(application);
         hungerRepository = new HungerRepository(application);
         mealRepository = new MealRepository(application);
+
+        // Executor for non-LiveData database queries
         executor = Executors.newSingleThreadExecutor();
 
+        // Initialize LiveData streams from repositories
         recentMeals = mealRepository.getRecentMeals(3);
         weeklySatisfactionAverage = mealRepository.getWeeklyAverageSatisfaction();
 
@@ -42,7 +42,10 @@ public class HomeViewModel extends AndroidViewModel {
         calculateStreak();
     }
 
-    // Streak runs on background thread — looks back 30 days
+    /**
+     * Executes streak calculation on a background thread.
+     * Results are posted back to the main thread via LiveData.
+     */
     public void calculateStreak() {
         executor.execute(() -> {
             int streak = hungerRepository.calculateStreakDays(30);
@@ -50,6 +53,7 @@ public class HomeViewModel extends AndroidViewModel {
         });
     }
 
+    // Getters for UI observation
     public LiveData<String> getDailyAffirmation() { return dailyAffirmation; }
     public LiveData<Integer> getCheckInStreak() { return checkInStreak; }
     public LiveData<List<MealEntry>> getRecentMeals() { return recentMeals; }
@@ -58,6 +62,7 @@ public class HomeViewModel extends AndroidViewModel {
     @Override
     protected void onCleared() {
         super.onCleared();
+        // Prevent memory leaks by shutting down the executor
         executor.shutdown();
     }
 }

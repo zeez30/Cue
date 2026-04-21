@@ -3,7 +3,6 @@ package com.zeez.nourishquest.util;
 import android.graphics.Color;
 
 // Maps the 1–10 hunger/fullness scale to labels, body cue descriptions, and colours.
-// Colours run coral (hungry) → mustard (neutral) → grape (overfull).
 public final class HungerScaleHelper {
 
     private HungerScaleHelper() {}

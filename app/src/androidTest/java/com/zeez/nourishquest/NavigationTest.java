@@ -13,20 +13,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 /**
- * Espresso navigation smoke tests.
- *
- * These tests launch MainActivity directly (bypassing onboarding by relying
- * on PrefsManager having been set, or via a test rule that sets it first)
- * and verify that tapping each bottom nav item displays the expected screen.
- *
- * Espresso's ViewMatchers verify UI state synchronously — no Thread.sleep()
- * or polling loops are needed. The Idling Resources mechanism handles async
- * LiveData updates.
- *
- * These are smoke tests, not exhaustive. They guard against:
- *  - Fragment not attaching (crash on navigation tap)
- *  - Wrong destination loaded (nav graph misconfiguration)
- *  - ViewBinding null reference after navigation
+ * UI automated navigation tests using the Espresso framework.
+ * These tests validate the integrity of the Jetpack Navigation graph and
+ * verify fragment transaction success across the bottom navigation menu.
  */
 @RunWith(AndroidJUnit4.class)
 public class NavigationTest {
@@ -39,7 +28,7 @@ public class NavigationTest {
             Espresso.onView(ViewMatchers.withId(R.id.hungerFragment))
                     .perform(ViewActions.click());
 
-            // The hunger screen title should be visible
+            // Verify fragment attachment and visibility of the header
             Espresso.onView(ViewMatchers.withText("HUNGER CHECK-IN"))
                     .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
         }
@@ -89,13 +78,13 @@ public class NavigationTest {
         try (ActivityScenario<MainActivity> scenario =
                      ActivityScenario.launch(MainActivity.class)) {
 
-            // Navigate away then return
+            // Execute multi-step navigation to verify backstack integrity
             Espresso.onView(ViewMatchers.withId(R.id.hungerFragment))
                     .perform(ViewActions.click());
             Espresso.onView(ViewMatchers.withId(R.id.homeFragment))
                     .perform(ViewActions.click());
 
-            // Affirmation card should be visible on home
+            // Check for home-specific UI components
             Espresso.onView(ViewMatchers.withId(R.id.text_affirmation))
                     .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
         }

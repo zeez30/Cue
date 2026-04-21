@@ -10,23 +10,20 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.zeez.nourishquest.databinding.FragmentHungerBinding;
 import com.zeez.nourishquest.util.HungerScaleHelper;
-import androidx.recyclerview.widget.ItemTouchHelper;
-import androidx.recyclerview.widget.RecyclerView;
 
-// Hunger/fullness check-in screen.
-// The pixel scale is built programmatically — 10 View blocks added to a LinearLayout.
-// Tapping a block updates the ViewModel which triggers a redraw of all blocks.
 public class HungerFragment extends Fragment {
 
     private FragmentHungerBinding binding;
     private HungerViewModel viewModel;
     private HungerLogAdapter adapter;
 
-    // Tracks whether this check-in is before or after a meal
+    // Default state for meal phase categorization
     private String selectedPhase = "BEFORE";
 
     @Override
@@ -48,7 +45,7 @@ public class HungerFragment extends Fragment {
         observeViewModel();
     }
 
-    // Builds 10 colour blocks for the hunger scale and attaches click listeners
+    // Programmatically generates 10 interactive color blocks for the hunger scale
     private void setupScaleBlocks() {
         binding.pixelScale.removeAllViews();
 
@@ -63,6 +60,7 @@ public class HungerFragment extends Fragment {
             android.widget.LinearLayout.LayoutParams params =
                     new android.widget.LinearLayout.LayoutParams(size, size);
             params.setMargins(margin, 0, margin, 0);
+
             block.setLayoutParams(params);
             block.setBackgroundColor(HungerScaleHelper.getDimColour(level));
             block.setTag(level);
@@ -72,12 +70,11 @@ public class HungerFragment extends Fragment {
         }
     }
 
-    // Redraws scale blocks when the selected level changes
+    // Updates scale visuals: blocks at or below selection are highlighted
     private void refreshScaleVisuals(int selectedLevel) {
         for (int i = 0; i < binding.pixelScale.getChildCount(); i++) {
             View block = binding.pixelScale.getChildAt(i);
             int level = (int) block.getTag();
-            // Blocks at or below the selected level are bright, above are dimmed
             block.setBackgroundColor(level <= selectedLevel
                     ? HungerScaleHelper.getColour(level)
                     : HungerScaleHelper.getDimColour(level));
@@ -87,7 +84,7 @@ public class HungerFragment extends Fragment {
         binding.textScaleNumber.setText(String.valueOf(selectedLevel));
     }
 
-    // BEFORE/AFTER toggle — alpha shows which is active
+    // Handles toggle state between before and after meal phases
     private void setupPhaseToggle() {
         binding.btnBefore.setOnClickListener(v -> {
             selectedPhase = "BEFORE";
@@ -99,7 +96,7 @@ public class HungerFragment extends Fragment {
             binding.btnAfter.setAlpha(1f);
             binding.btnBefore.setAlpha(0.45f);
         });
-        // Default to BEFORE
+
         binding.btnBefore.setAlpha(1f);
         binding.btnAfter.setAlpha(0.45f);
     }
@@ -108,12 +105,14 @@ public class HungerFragment extends Fragment {
         binding.btnSaveCheckIn.setOnClickListener(v -> {
             Integer level = viewModel.getSelectedLevel().getValue();
             if (level == null) level = 5;
+
             String note = binding.editNote.getText() != null
                     ? binding.editNote.getText().toString().trim() : "";
+
             viewModel.saveCheckIn(level, selectedPhase, note);
             binding.editNote.setText("");
 
-            // Brief visual confirmation on the button itself
+            // Visual feedback on the save action
             binding.btnSaveCheckIn.setText("SAVED ✓");
             binding.btnSaveCheckIn.setEnabled(false);
             binding.btnSaveCheckIn.postDelayed(() -> {
@@ -127,23 +126,20 @@ public class HungerFragment extends Fragment {
         adapter = new HungerLogAdapter();
         binding.recyclerTodaysLogs.setLayoutManager(new LinearLayoutManager(requireContext()));
         binding.recyclerTodaysLogs.setAdapter(adapter);
-        // Wire up the delete callback — tells the ViewModel to remove the entry from the DB
+
+        // Connect delete callback to ViewModel repository access
         adapter.setOnDeleteListener(log -> viewModel.deleteLog(log.getId()));
 
-// Swipe left on any row to delete it
+        // Implementation of swipe-to-delete for list items
         new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
             @Override
-            public boolean onMove(@NonNull RecyclerView rv,
-                                  @NonNull RecyclerView.ViewHolder vh,
-                                  @NonNull RecyclerView.ViewHolder target) {
-                // Drag-to-reorder not supported
+            public boolean onMove(@NonNull RecyclerView rv, @NonNull RecyclerView.ViewHolder vh, @NonNull RecyclerView.ViewHolder target) {
                 return false;
             }
 
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                 int pos = viewHolder.getAdapterPosition();
-                // Fire the delete callback then show confirmation
                 adapter.getOnDeleteListener().onDelete(adapter.getItemAt(pos));
                 Toast.makeText(requireContext(), "Check-in deleted", Toast.LENGTH_SHORT).show();
             }
@@ -159,7 +155,6 @@ public class HungerFragment extends Fragment {
                     logs.size() + " check-in" + (logs.size() == 1 ? "" : "s") + " today");
         });
 
-        // SingleLiveEvent — only fires once per save, not on every rotation
         viewModel.getSaveResult().observe(getViewLifecycleOwner(), saved -> {
             if (Boolean.TRUE.equals(saved)) {
                 Toast.makeText(requireContext(), "Check-in saved ✓", Toast.LENGTH_SHORT).show();
